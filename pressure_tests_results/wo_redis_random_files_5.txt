@@ -1,0 +1,95 @@
+
+          /\      |‾‾| /‾‾/   /‾‾/   
+     /\  /  \     |  |/  /   /  /    
+    /  \/    \    |     (   /   ‾‾\  
+   /          \   |  |\  \ |  (‾)  | 
+  / __________ \  |__| \__\ \_____/ .io
+
+  execution: local
+     script: pressureTest.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 50 max VUs, 50s max duration (incl. graceful stop):
+           * default: 50 looping VUs for 20s (gracefulStop: 30s)
+
+
+running (01.0s), 50/50 VUs, 350 complete and 0 interrupted iterations
+default   [   5% ] 50 VUs  01.0s/20s
+
+running (02.0s), 50/50 VUs, 751 complete and 0 interrupted iterations
+default   [  10% ] 50 VUs  02.0s/20s
+
+running (03.0s), 50/50 VUs, 1192 complete and 0 interrupted iterations
+default   [  15% ] 50 VUs  03.0s/20s
+
+running (04.0s), 50/50 VUs, 1611 complete and 0 interrupted iterations
+default   [  20% ] 50 VUs  04.0s/20s
+
+running (05.0s), 50/50 VUs, 2030 complete and 0 interrupted iterations
+default   [  25% ] 50 VUs  05.0s/20s
+
+running (06.0s), 50/50 VUs, 2476 complete and 0 interrupted iterations
+default   [  30% ] 50 VUs  06.0s/20s
+
+running (07.0s), 50/50 VUs, 2881 complete and 0 interrupted iterations
+default   [  35% ] 50 VUs  07.0s/20s
+
+running (08.0s), 50/50 VUs, 3317 complete and 0 interrupted iterations
+default   [  40% ] 50 VUs  08.0s/20s
+
+running (09.0s), 50/50 VUs, 3752 complete and 0 interrupted iterations
+default   [  45% ] 50 VUs  09.0s/20s
+
+running (10.0s), 50/50 VUs, 4200 complete and 0 interrupted iterations
+default   [  50% ] 50 VUs  10.0s/20s
+
+running (11.0s), 50/50 VUs, 4643 complete and 0 interrupted iterations
+default   [  55% ] 50 VUs  11.0s/20s
+
+running (12.0s), 50/50 VUs, 5054 complete and 0 interrupted iterations
+default   [  60% ] 50 VUs  12.0s/20s
+
+running (13.0s), 50/50 VUs, 5493 complete and 0 interrupted iterations
+default   [  65% ] 50 VUs  13.0s/20s
+
+running (14.0s), 50/50 VUs, 5909 complete and 0 interrupted iterations
+default   [  70% ] 50 VUs  14.0s/20s
+
+running (15.0s), 50/50 VUs, 6355 complete and 0 interrupted iterations
+default   [  75% ] 50 VUs  15.0s/20s
+
+running (16.0s), 50/50 VUs, 6802 complete and 0 interrupted iterations
+default   [  80% ] 50 VUs  16.0s/20s
+
+running (17.0s), 50/50 VUs, 7231 complete and 0 interrupted iterations
+default   [  85% ] 50 VUs  17.0s/20s
+
+running (18.0s), 50/50 VUs, 7683 complete and 0 interrupted iterations
+default   [  90% ] 50 VUs  18.0s/20s
+
+running (19.0s), 50/50 VUs, 8109 complete and 0 interrupted iterations
+default   [  95% ] 50 VUs  19.0s/20s
+
+running (20.0s), 50/50 VUs, 8506 complete and 0 interrupted iterations
+default   [ 100% ] 50 VUs  20.0s/20s
+
+running (20.1s), 00/50 VUs, 8560 complete and 0 interrupted iterations
+default ✓ [ 100% ] 50 VUs  20s
+
+     data_received..................: 1.8 GB 90 MB/s
+     data_sent......................: 1.1 MB 54 kB/s
+     http_req_blocked...............: avg=12.98µs  min=0s       med=1µs      max=2.78ms   p(90)=2µs      p(95)=4µs    
+     http_req_connecting............: avg=7.59µs   min=0s       med=0s       max=1.58ms   p(90)=0s       p(95)=0s     
+     http_req_duration..............: avg=16.84ms  min=164µs    med=13.45ms  max=152.41ms p(90)=33.86ms  p(95)=43.57ms
+       { expected_response:true }...: avg=17.05ms  min=164µs    med=13.81ms  max=152.41ms p(90)=34.08ms  p(95)=43.45ms
+     http_req_failed................: 12.41% ✓ 1063       ✗ 7497
+     http_req_receiving.............: avg=230.38µs min=7µs      med=41µs     max=114.26ms p(90)=134µs    p(95)=173µs  
+     http_req_sending...............: avg=7.64µs   min=2µs      med=4µs      max=8.71ms   p(90)=10µs     p(95)=15µs   
+     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s     
+     http_req_waiting...............: avg=16.6ms   min=149µs    med=13.35ms  max=144.54ms p(90)=33.78ms  p(95)=43.35ms
+     http_reqs......................: 8560   425.614643/s
+     iteration_duration.............: avg=117.2ms  min=100.24ms med=113.89ms max=255.41ms p(90)=134.27ms p(95)=144.1ms
+     iterations.....................: 8560   425.614643/s
+     vus............................: 50     min=50       max=50
+     vus_max........................: 50     min=50       max=50
+

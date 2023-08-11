@@ -1,0 +1,30 @@
+model_config:
+  name: simplenet
+experiment_dir: /tmp/dir
+random_seed: null
+train_config:
+  dataset: mnist
+  batch_size: 64
+  epochs: 10
+  optimizer_config:
+    name: sgd
+    arguments:
+      weight_decay: 0.0
+      momentum: 0.1
+      lr: 0.001
+  scheduler_config: null
+  rand_weights_init: true
+keep_n_checkpoints: 3
+tensorboard: true
+amp: false
+device: cpu
+verbose: console
+eval_subsample: 1.0
+metrics_n_batches: 200
+metrics_mb_limit: 100
+early_stopping_iter: null
+eval_epoch: 1.0
+log_epoch: 1.0
+init_chkpt: null
+warm_up_epochs: 1.0
+divergence_factor: 100.0
