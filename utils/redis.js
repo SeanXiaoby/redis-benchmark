@@ -3,8 +3,8 @@ const redis = require("redis");
 class RedisInterface {
   constructor() {
     this.client = redis.createClient({
-      host: "127.0.0.1", // Redis 服务器的主机名
-      port: 6379, // Redis 服务器的端口号
+      host: "127.0.0.1",
+      port: 6379,
     });
     this.client.on("error", (err) => console.log("Redis Client Error", err));
     this.isConnected = false;
