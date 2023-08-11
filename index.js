@@ -19,32 +19,27 @@ app.get("/download", async (req, res, next) => {
     return res.status(400).send("No file name specified.");
   }
 
-  // const cachedFile = await redisInterface.getFile(fileName);
+  const cachedFile = await redisInterface.getFile(fileName);
 
-  // if (cachedFile !== null && cachedFile !== undefined) {
-  //   res.status(200);
-  //   res.send("From CACHE: \n" + cachedFile);
-  //   return next();
-  // }
+  if (cachedFile !== null && cachedFile !== undefined) {
+    res.status(200);
+    res.send("From CACHE: \n" + cachedFile);
+    return next();
+  }
 
   const filePath = path.join(__dirname, "/files", fileName);
-  // const file = fileLoader(filePath);
+  const file = fileLoader(filePath);
 
-  // if (file === null || file === undefined) {
-  //   res.status(404).send("File not found.");
-  //   return next();
-  // } else {
-  //   // redisInterface.setFile(fileName, file, 5);
+  if (file === null || file === undefined) {
+    res.status(404).send("File not found.");
+    return next();
+  } else {
+    // redisInterface.setFile(fileName, file, 5);
 
-  //   res.status(200);
-  //   res.send("From LOCAL: \n" + file);
-  //   return next();
-  // }
-
-  res.status(200);
-  res.sendFile(filePath, (err) => {
-    next();
-  });
+    res.status(200);
+    res.send("From LOCAL: \n" + file);
+    return next();
+  }
 });
 
 app.use(async (req, res, next) => {
