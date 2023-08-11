@@ -1,6 +1,8 @@
 const express = require("express");
+const multer = require("multer");
 const path = require("path");
 const fileLoader = require("./utils/fileLoader");
+const RedisInterface = require("./utils/redis");
 
 const app = express();
 const port = 3000;
@@ -17,6 +19,14 @@ app.get("/download", async (req, res, next) => {
     return res.status(400).send("No file name specified.");
   }
 
+  const cachedFile = await redisInterface.getFile(fileName);
+
+  if (cachedFile !== null && cachedFile !== undefined) {
+    res.status(200);
+    res.send("From CACHE: \n" + cachedFile);
+    return next();
+  }
+
   const filePath = path.join(__dirname, "/files", fileName);
   const file = fileLoader(filePath);
 
@@ -24,6 +34,8 @@ app.get("/download", async (req, res, next) => {
     res.status(404).send("File not found.");
     return next();
   } else {
+    // redisInterface.setFile(fileName, file, 5);
+
     res.status(200);
     res.send("From LOCAL: \n" + file);
     return next();
@@ -47,6 +59,13 @@ app.use(async (req, res, next) => {
 });
 
 // Entry point
+
+redisInterface.connect();
+
+if (!redisInterface.testConnection()) {
+  console.log("Failed to connect to Redis server.");
+  process.exit(1);
+}
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

@@ -1,11 +1,11 @@
 const express = require("express");
 const path = require("path");
 const fileLoader = require("./utils/fileLoader");
+const NodeCache = require("node-cache");
 
 const app = express();
 const port = 3000;
-
-const redisInterface = new RedisInterface();
+const cache = new NodeCache({ stdTTL: 60 });
 
 // Set files folder as static folder
 app.use(express.static(path.join(__dirname, "files")));
@@ -17,6 +17,12 @@ app.get("/download", async (req, res, next) => {
     return res.status(400).send("No file name specified.");
   }
 
+  if (cache.has(fileName)) {
+    res.status(200);
+    res.send("From CACHE: \n" + cache.get(fileName));
+    return next();
+  }
+
   const filePath = path.join(__dirname, "/files", fileName);
   const file = fileLoader(filePath);
 
@@ -24,6 +30,8 @@ app.get("/download", async (req, res, next) => {
     res.status(404).send("File not found.");
     return next();
   } else {
+    cache.set(fileName, file);
+
     res.status(200);
     res.send("From LOCAL: \n" + file);
     return next();
